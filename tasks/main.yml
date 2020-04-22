@@ -1,0 +1,20 @@
+---
+# tasks file for setup_users
+
+- name: Creating User Accounts
+  user:
+    name: "{{ item.setup_users_name | default(omit)}}"
+    comment: "{{ item.setup_users_comment | default(omit)}}"
+    state: "{{ item.setup_users_state | default(omit) }}"
+    group: '{{ item.setup_users_group | default(omit) }}'
+    groups: '{{ item.setup_users_groups | default(omit) }}'
+    append: '{{ item.setup_users_append | default(omit) }}'
+    home: '{{ item.setup_users_home | default(omit) }}'
+    create_home: '{{ item.setup_users_create_home | default(omit) }}'
+    password: '{{ item.setup_users_password | default(omit) }}'
+    password_lock: '{{ item.setup_users_password_lock | default(omit) }}'
+    update_password: '{{ item.setup_users_update_password | default(omit) }}'
+    remove: '{{ item.setup_users_remove | default(omit) }}'
+    shell: '{{ item.setup_users_shell | default(omit) }}'
+    uid: '{{ item.setup_users_uid | default(omit) }}'
+  with_items: "{{ users }}"

@@ -1,0 +1,8 @@
+---
+# defaults file for setup_users
+
+users:
+  - setup_users_name: testuser
+    setup_users_comment: Test User
+    setup_users_state: present
+    setup_users_update_password:  on_create
