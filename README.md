@@ -12,59 +12,58 @@ None.
 
     setup_users_name
     
-Username, this is required
+The username of the account, this is required.
 
     setup_users_comment
     
-Comment, default = none
+Set user description field.
 
     setup_users_state
     
-State, default = present
+Defines what do to with the account.
 
     setup_users_group
     
-Users primary group, default = {{ setup_users_name }}
+Defines the users primary group.
 
     setup_users_groups
     
-Users secondary groups, default = none
+Defines the users secondary groups.
 
     setup_users_shell
-    
-Users shell, default = /bin/bash
+The shell to use for the user account.
 
     setup_users_password
     
-Users encrypted password, default = none
+Set the users password using.  This users an encrypted version of the password.
 
     setup_users_update_password
     
-Update_password option, default = on_create
+Should the users password be set evey time the playbook is run. Options are `always` or `on_create`, default is `always`.
 
     setup_users_password_lock
     
-Lock password, default false, alse affected by the value of setup_users_update_password
+Should the password be locked.
 
     setup_users_home
     
-User home directory, default = /home/{{ setup_users_home }}
+The full path to user home directory.
 
     setup_users_create_home
     
-Create users home directory, default = true
+Should the users home directory be created.
 
     setup_users_append
     
-Should groups be appended to existing ones or overwritten, default = true
+Should secondary groups be appended to existing ones or overwritten.
 
     setup_users_uid
     
-UID to user when creating user
+The UID to use when creating the account.
 
     setup_users_remove
     
-Remove the users home directory when state = absent, default true
+Should the users home directory be removed when state = absent.
 
 ## Dependencies
 
