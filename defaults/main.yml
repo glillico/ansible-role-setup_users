@@ -2,10 +2,10 @@
 # defaults file for setup_users
 
 users:
-  - setup_users_name: 
-    setup_users_comment: 
-    setup_users_state: 
-    setup_users_shell: 
+  - setup_users_name:
+    setup_users_comment:
+    setup_users_state:
+    setup_users_shell:
 
 # EXAMPLES
 # Create this user account if it does not exist. Set the users shell to be /bin/bash.
