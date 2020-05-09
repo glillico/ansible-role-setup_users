@@ -3,8 +3,8 @@
 
 - name: Creating User Accounts
   user:
-    name: "{{ item.setup_users_name | default(omit)}}"
-    comment: "{{ item.setup_users_comment | default(omit)}}"
+    name: "{{ item.setup_users_name | default(omit) }}"
+    comment: "{{ item.setup_users_comment | default(omit) }}"
     state: "{{ item.setup_users_state | default(omit) }}"
     group: '{{ item.setup_users_group | default(omit) }}'
     groups: '{{ item.setup_users_groups | default(omit) }}'
