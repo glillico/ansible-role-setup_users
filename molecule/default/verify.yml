@@ -1,0 +1,21 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+
+  pre_tasks:
+    - name: Include variables.
+      include_vars: 'vars/main.yml'
+
+  tasks:
+    - name: Creating User Accounts
+      user:
+        name: "{{ item.setup_users_name | default(omit) }}"
+        comment: "{{ item.setup_users_comment | default(omit) }}"
+        state: "{{ item.setup_users_state | default(omit) }}"
+        shell: '{{ item.setup_users_shell | default(omit) }}'
+      with_items: "{{ users }}"
+      check_mode: true
+      register: result
+      failed_when: result.changed
