@@ -1,6 +1,6 @@
 # Ansible Role : setup_users
 
-[![Ansible Molecule](https://github.com/glillico/ansible-role-setup_users/workflows/Ansible%20Molecule/badge.svg)](https://github.com/glillico/ansible-role-setup_users/actions?query=workflow%3AAnsible%20Molecule)
+[![molecule](https://github.com/glillico/ansible-role-setup_users/workflows/molecule/badge.svg)](https://github.com/glillico/ansible-role-setup_users/actions?query=workflow%3Amolecule)
 
 This role creates user accounts.
 
