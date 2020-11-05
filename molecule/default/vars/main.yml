@@ -1,8 +1,14 @@
 ---
 # vars file for setup_users
 
+suu_groups:
+  - suu_groups_name: testgroup
+    suu_groups_gid: 7771
+    suu_groups_state: present
+
 users:
   - setup_users_name: testuser
     setup_users_comment: This Is A Test User
     setup_users_state: present
+    setup_users_group: testgroup
     setup_users_shell: /bin/bash
