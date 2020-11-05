@@ -2,7 +2,7 @@
 
 [![molecule](https://github.com/glillico/ansible-role-setup_users/workflows/molecule/badge.svg)](https://github.com/glillico/ansible-role-setup_users/actions?query=workflow%3Amolecule)
 
-This role creates user accounts.
+This role creates groups and user accounts.
 
 ## Requirements
 
@@ -12,11 +12,19 @@ None.
 
 ### defaults/main.yml
 
+#### Groups
+|Variable|Description|
+|---|:---|
+|suu_groups_name|The name of the group, this is required.|
+|suu_groups_gid|Set groups GID.|
+|suu_groups_state|Defines if the group should be present or not.|
+
+#### Users
 |Variable|Description|
 |---|:---|
 |setup_users_name|The username of the account, this is required.|
 |setup_users_comment|Set user description field.|
-|setup_users_state|Defines what do to with the account.|
+|setup_users_state|Defines if the account should be present or not.|
 |setup_users_group|Defines the users primary group.|
 |setup_users_groups|Defines the users secondary groups.|
 |setup_users_shell|The shell to use for the user account.|
@@ -30,6 +38,20 @@ None.
 |setup_users_remove|Should the users home directory be removed when state = absent.|
 
 #### Examples
+
+##### Create the group testgroup if it does not exist.
+```
+  - suu_groups_name: testgroup1
+    suu_groups_gid: 7771
+    suu_groups_state: present
+```
+
+##### Remove the group testgroup if it exists.
+```
+  - suu_groups_name: testgroup2
+    suu_groups_gid: 7772
+    suu_groups_state: absent
+```
 
 ##### Create this user account if it does not exist. Set the users shell to be /bin/bash.
 ```
