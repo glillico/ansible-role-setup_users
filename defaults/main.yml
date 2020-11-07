@@ -1,8 +1,14 @@
 ---
 # defaults file for setup_users
 
+suu_groups:
+  - suu_groups_name:
+    suu_groups_gid:
+    suu_groups_state:
+
 users:
   - setup_users_name:
     setup_users_comment:
     setup_users_state:
+    setup_users_group:
     setup_users_shell:

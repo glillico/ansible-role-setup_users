@@ -9,13 +9,23 @@
       include_vars: 'vars/main.yml'
 
   tasks:
-    - name: Creating User Accounts
-      user:
-        name: "{{ item.setup_users_name | default(omit) }}"
-        comment: "{{ item.setup_users_comment | default(omit) }}"
-        state: "{{ item.setup_users_state | default(omit) }}"
-        shell: '{{ item.setup_users_shell | default(omit) }}'
-      with_items: "{{ users }}"
+    - name: Verify User Groups
+      group:
+        name: '{{ item.suu_groups_name }}'
+        gid: '{{ item.suu_groups_gid | default(omit) }}'
+        state: '{{ item.suu_groups_state | default(omit) }}'
+      with_items: '{{ suu_groups }}'
       check_mode: true
-      register: result
-      failed_when: result.changed
+      register: result1
+      failed_when: result1.changed
+
+    - name: Verify User Accounts
+      user:
+        name: '{{ item.setup_users_name }}'
+        comment: '{{ item.setup_users_comment | default(omit) }}'
+        state: '{{ item.setup_users_state | default(omit) }}'
+        shell: '{{ item.setup_users_shell | default(omit) }}'
+      with_items: '{{ users }}'
+      check_mode: true
+      register: result2
+      failed_when: result2.changed

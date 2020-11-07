@@ -1,11 +1,19 @@
 ---
 # tasks file for setup_users
 
-- name: Creating User Accounts
+- name: Create User Groups.
+  group:
+    name: '{{ item.suu_groups_name }}'
+    gid: '{{ item.suu_groups_gid | default(omit) }}'
+    state: '{{ item.suu_groups_state | default(omit) }}'
+  with_items: '{{ suu_groups }}'
+  when: item.suu_groups_state == 'present'
+
+- name: Create, Update or Remove User Accounts.
   user:
-    name: "{{ item.setup_users_name | default(omit) }}"
-    comment: "{{ item.setup_users_comment | default(omit) }}"
-    state: "{{ item.setup_users_state | default(omit) }}"
+    name: '{{ item.setup_users_name }}'
+    comment: '{{ item.setup_users_comment | default(omit) }}'
+    state: '{{ item.setup_users_state | default(omit) }}'
     group: '{{ item.setup_users_group | default(omit) }}'
     groups: '{{ item.setup_users_groups | default(omit) }}'
     append: '{{ item.setup_users_append | default(omit) }}'
@@ -17,4 +25,12 @@
     remove: '{{ item.setup_users_remove | default(omit) }}'
     shell: '{{ item.setup_users_shell | default(omit) }}'
     uid: '{{ item.setup_users_uid | default(omit) }}'
-  with_items: "{{ users }}"
+  with_items: '{{ users }}'
+
+- name: Remove User Groups.
+  group:
+    name: '{{ item.suu_groups_name }}'
+    gid: '{{ item.suu_groups_gid | default(omit) }}'
+    state: '{{ item.suu_groups_state | default(omit) }}'
+  with_items: '{{ suu_groups }}'
+  when: item.suu_groups_state == 'absent'
