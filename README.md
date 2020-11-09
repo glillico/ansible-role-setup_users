@@ -12,6 +12,12 @@ None.
 
 ### defaults/main.yml
 
+|Variable|Description|
+|---|:---|
+|suu_groups_create|Should groups be created.<br>(Options: `true`, `false`)|
+|suu_groups_remove|Should groups be removed.<br>(Options: `true`, `false`)|
+|suu_users_addorrm|Should users be created or removed.<br>(Options: `true`, `false`)|
+
 #### Groups
 |Variable|Description|
 |---|:---|
