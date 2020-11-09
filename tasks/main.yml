@@ -7,7 +7,9 @@
     gid: '{{ item.suu_groups_gid | default(omit) }}'
     state: '{{ item.suu_groups_state | default(omit) }}'
   with_items: '{{ suu_groups }}'
-  when: item.suu_groups_state == 'present'
+  when:
+    - item.suu_groups_state == 'present'
+    - suu_groups_create | bool
 
 - name: Create, Update or Remove User Accounts.
   user:
@@ -26,6 +28,7 @@
     shell: '{{ item.setup_users_shell | default(omit) }}'
     uid: '{{ item.setup_users_uid | default(omit) }}'
   with_items: '{{ users }}'
+  when: suu_users_addorrm | bool
 
 - name: Remove User Groups.
   group:
@@ -33,4 +36,6 @@
     gid: '{{ item.suu_groups_gid | default(omit) }}'
     state: '{{ item.suu_groups_state | default(omit) }}'
   with_items: '{{ suu_groups }}'
-  when: item.suu_groups_state == 'absent'
+  when:
+    - item.suu_groups_state == 'absent'
+    - suu_groups_remove | bool

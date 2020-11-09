@@ -1,6 +1,10 @@
 ---
 # defaults file for setup_users
 
+suu_groups_create: true
+suu_groups_remove: true
+suu_users_addorrm: true
+
 suu_groups:
   - suu_groups_name:
     suu_groups_gid:
