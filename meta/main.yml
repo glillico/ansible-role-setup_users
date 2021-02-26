@@ -1,5 +1,6 @@
 galaxy_info:
-  author: Graham Lillico
+  role_name: setup_users
+  author: glillicov
   description: Sets up users on an ansible node.
   license: license (MIT)
   min_ansible_version: 2.4
