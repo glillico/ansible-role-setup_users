@@ -7,7 +7,5 @@
     - name: Include variables.
       include_vars: 'vars/main.yml'
 
-  tasks:
-    - name: "Include ansible-role-setup_users"
-      include_role:
-        name: "ansible-role-setup_users"
+  roles:
+    - role: glillico.setup_users
