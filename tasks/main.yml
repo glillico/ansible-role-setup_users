@@ -29,6 +29,7 @@
     uid: '{{ item.setup_users_uid | default(omit) }}'
   with_items: '{{ users }}'
   when: suu_users_addorrm | bool
+  no_log: true
 
 - name: Remove User Groups.
   group:
