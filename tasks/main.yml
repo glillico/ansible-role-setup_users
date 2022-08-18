@@ -9,7 +9,6 @@
   with_items: '{{ suu_groups }}'
   when:
     - item.suu_groups_state == 'present'
-    - suu_groups_create | bool
 
 - name: Create, Update or Remove User Accounts.
   user:
@@ -28,8 +27,9 @@
     shell: '{{ item.setup_users_shell | default(omit) }}'
     uid: '{{ item.setup_users_uid | default(omit) }}'
   with_items: '{{ users }}'
-  when: suu_users_addorrm | bool
-  no_log: true
+  when:
+    ( item.setup_users_state == 'absent' ) or
+    ( item.setup_users_state == 'present' )
 
 - name: Remove User Groups.
   group:
@@ -39,4 +39,3 @@
   with_items: '{{ suu_groups }}'
   when:
     - item.suu_groups_state == 'absent'
-    - suu_groups_remove | bool
